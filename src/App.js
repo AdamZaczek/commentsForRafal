@@ -4,23 +4,26 @@ import { useState } from "react";
 
 const comments = [
   {
-    author: "Rafał",
     text: "Taki se",
-    avatar:
-      "https://i0.wp.com/www.cssscript.com/wp-content/uploads/2020/12/Customizable-SVG-Avatar-Generator-In-JavaScript-Avataaars.js.png?fit=438%2C408&ssl=1",
+    author: {
+      name: "Rafał",
+      avatar:
+        "https://i0.wp.com/www.cssscript.com/wp-content/uploads/2020/12/Customizable-SVG-Avatar-Generator-In-JavaScript-Avataaars.js.png?fit=438%2C408&ssl=1",
+    },
   },
 ];
-
 
 const Comment = (props) => {
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
 
-  const { text, author, avatar } = props;
+  const { text, author } = props;
+  const name = author.name;
+  const avatar = author.avatar;
   return (
     <div>
       <img src={avatar} />
-      {text} by {author}
+      {text} by {name}
       <button
         onClick={() => {
           if (liked) {
